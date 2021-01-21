@@ -1,0 +1,60 @@
+{%extends 'globals/base.html'%}
+{%block content%}
+{% load static %}
+<div style="margin-top:100px;" class='container'>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One - Set the background image for this slide in the line below -->
+
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      {%for object in objects%}
+      {%if forloop.counter == 1%}
+      <div class="carousel-item active" >
+      {%else%}
+       <div class="carousel-item " >
+         {%endif%}
+        <img src="{{object.image.url}}" class="d-block w-100" alt="{{object.image.name}}">
+      </div>
+      {%endfor%}
+      <!-- Slide Three - Set the background image for this slide in the line below -->
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Prev</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <!--<h2>Index: Entry point of web site</h2>
+    <ul class='list-group list-group-horizontal-sm'>
+        {% for object in objects%}
+        <li class="list-group-item">
+            <figure class='figure' style="width: 18rem;" >
+                    <a href={%url 'drinks:detail_view' object.id%}>
+                <img src="{{object.image.url}}" alt="{{object.image.name}}"
+                    class="figure-img img-fluid rounded img-thumbnail" style="height:30rem;">
+                    </a>
+                <figcaption class="figcaption">
+                    name: {{object.name}}
+                </figcaption>
+                <figcaption class="figcaption">
+                    brand: {{object.brand.name}}
+                </figcaption>
+                <figcaption class="figcaption">
+                    likes: {{object.get_likes}}
+                </figcaption>
+            </figure>
+        </li>
+        {%endfor%}
+    </ul>-->
+</div>
+{%endblock%}

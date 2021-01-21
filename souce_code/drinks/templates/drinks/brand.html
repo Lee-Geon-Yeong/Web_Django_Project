@@ -1,0 +1,15 @@
+{%extends 'globals/base.html'%}
+{%block content%}
+<h2>{{object.name}}: detail_view</h2>
+<figure><img src="{{object.image.url}}" alt="{{object.image.name}}">
+    <figcaption>
+        {{object.desc}}/{{object.image.name}}
+    </figcaption>
+</figure>
+<p>click to search {{object.name}}'s products</p>
+<section>
+    graph for brand
+    - selling stat by percentage.
+    - monthly solds
+</section>
+{%endblock%}

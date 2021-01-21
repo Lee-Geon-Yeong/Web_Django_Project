@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+<div>
+    <h2>drink object list</h2>
+    <ul>
+    {% for object in objects%}
+        <li>
+            <figure><img src="{{object.image.url}}" alt="{{object.image.name}}"></figure>
+            <figcaption class="brand name">{{object.brand.name}}</figcaption>
+            <figcaption class="drinks desc">{{object.desc}}</figcaption>
+        </li>
+    {%endfor%}
+    </ul>
+</div>
+{%endblock%}

@@ -1,0 +1,35 @@
+{%extends 'base.html' %}
+
+{%block content%}
+user :{{user.email}} </br>
+<h3>
+    payment items:
+</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">price</th>
+            <th scope="col">quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in objects %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{object.drink}}</td>
+            <td>{{object.price}}</td>
+            <td>{{object.quantity}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+total : {{total_price}} <br/><br/>
+<button type="button" class="btn btn-info">PAYMENT NOW</button>
+
+<a href="{% url 'payments:previous_payment_view' %}">
+        <button type="button" class="btn btn-info">PREVIOUS</button>
+</a>
+{%endblock%}

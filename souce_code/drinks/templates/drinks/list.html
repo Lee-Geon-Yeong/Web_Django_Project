@@ -1,0 +1,67 @@
+{%extends 'globals/base.html'%}
+{%block content%}
+{%include 'drinks/filterform.html'%}
+<div>
+    <h2>drink object list</h2>
+    <ul>
+        {%for object in objects%}
+        <figure class='figure'><img src="{{object.image.url}}" alt="{{object.image.name}}"
+                class='figure-img img-fluid rounded img-thumbnail float-left'>
+            <figcaption class='figure-caption'>
+                <a href="{%url 'drinks:detail_view' object.id%}">
+                    <span>
+                        {{object.name}}
+                    </span>
+                </a>
+                <span> by,
+                    {{object.brand.name}}
+                </span>
+                <span>
+                    {{object.price}}
+                </span>
+
+                <form action="{%url 'drinks:list_view' %}" method="POST">
+                {%csrf_token%}
+                    <input type="hidden" name='drink_like' id='drink_like' value={{object.id}} readonly>
+                {%if user.is_authenticated %}
+                {%load likes_filter%}
+                {% if object|has_liked:user %}
+                    <input type="submit" value="이미 좋아요 하셨습니다.">
+                {%else%}
+                    <input type="submit" value="좋아요!">
+                </form>
+                {%endif%}
+                {%endif%}
+
+            </figcaption>
+        </figure>
+        {%endfor%}
+    </ul>
+    {%if objects.has_other_pages%}
+    <ul class="pagination">
+        {% if objects.has_previous %}
+        <li><a href="?page={{ objects.previous_page_number }}">&laquo;</a></li>
+        {% else %}
+        <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+        {% for i in objects.paginator.page_range %}
+        {% if objects.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+        {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if objects.has_next %}
+        <li><a href="?page={{ objects.next_page_number }}">&raquo;</a></li>
+        {% else %}
+        <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+    </ul>
+    {%endif%}
+</div>
+{%endblock%}
+{%block scripts%}
+$('#myModal').on('shown.bs.modal', function () {
+$('#myInput').trigger('focus')
+})
+{%endblock%}

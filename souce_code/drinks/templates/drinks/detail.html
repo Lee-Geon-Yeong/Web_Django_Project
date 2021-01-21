@@ -1,0 +1,50 @@
+{%extends 'globals/base.html'%}
+{%block content%}
+<div>
+    <h2>{{object.name}} DEATIL</h2>
+    <figure><img src="{{object.image.url}}" alt="{{object.image.name}}">
+        <figcaption>
+            <a href="{%url 'drinks:detail_view' object.id%}">
+                <span>
+                    {{object.name}}
+                </span>
+            </a>
+            <span> by,
+                {{object.brand.name}}
+            </span>
+            <span>
+                {{object.price}}
+            </span>
+        </figcaption>
+    </figure>
+    <form method="POST" target="">
+        {%csrf_token%}
+        {{form.as_p}}
+        <input type="submit" value="submit" />
+    </form>
+    <section>
+        <h3>related posts</h3>
+        <ul>
+            {%if object.posts.count%}
+            {%for post in object.posts%}
+            <li>
+                <p>
+                    <span>
+                        author:
+                    </span>
+                    {{post.account}}
+                </p>
+                <p>
+                    {{post.content}}
+                </p>
+                <p>
+                    <span>likes: </span>
+                    {{post.likes}}
+                </p>
+            </li>
+            {%endfor%}
+            {%endif%}
+        </ul>
+    </section>
+</div>
+{%endblock%}

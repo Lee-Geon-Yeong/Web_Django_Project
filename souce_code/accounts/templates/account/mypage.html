@@ -1,0 +1,45 @@
+{%extends 'globals/base.html'%}
+{%block content%}
+user :{{user.email}}</br>
+<h3>
+    cart items:
+</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">product</th>
+            <th scope="col">name</th>
+            <th scope="col">quantity</th>
+            <th scope="col">price</th>
+            <th scope="col">update</th>
+            <th scope="col">delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for cartitem in objects%}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td style='background-image: url({{cartitem.drink.image.url}}); background-size: 100% 100%;'></td>
+            <td>{{cartitem.drink}}</td>
+            <td>{{cartitem.quantity}}</td>
+            <td>{{cartitem.price}}</td>
+            <td>
+                <form action="{%url 'carts:item_update_view' cartitem.id%}" method="POST">
+                    {%csrf_token%}{{update_form.as_p}}<input type="submit" value="update amount">
+                </form>
+            </td>
+            <td>
+                <form action="{%url 'carts:item_delete_view' cartitem.id%}" method="post">{%csrf_token%}<input
+                        type="submit" value="delte item"></form>
+            </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+
+</table>
+<a href="{% url 'payments:create_payment_view' %}">
+        <button type="button" class="btn btn-info">PAYMENT</button>
+</a>
+
+{%endblock%}
