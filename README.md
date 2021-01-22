@@ -47,14 +47,14 @@
 
 ## 6. Database Model
 - Drinks & Brand<br>
-![image](https://user-images.githubusercontent.com/59759468/105464356-d0277100-5cd4-11eb-8626-dc8eb5f3da62.png)
+![image](https://user-images.githubusercontent.com/59759468/105464356-d0277100-5cd4-11eb-8626-dc8eb5f3da62.png)<br>
 drinks 는 category로서 필터링 역할을 해줄 brand 를 참조합니다. 그 외에도 추천하는 음식과 좋아요, price등으로 검색이 가능하도록 구성되었습니다. drinks 에서만 검색하는 것 뿐 아니라, brand 에 속하는 drinks 를 검색할 수 있습니다.
 
 - Cart & Payment<br>
-![image](https://user-images.githubusercontent.com/59759468/105464362-d3226180-5cd4-11eb-9e21-953917058a04.png)
+![image](https://user-images.githubusercontent.com/59759468/105464362-d3226180-5cd4-11eb-9e21-953917058a04.png)<br>
 accounts 는 cutomized usermodel입니다. 기존 builtin usermodel과 유사하지만 BaseUser를 Overide하되, 소셜 로그인을 위해 email을 user-identity로 사용하며, Annoymous user혹은 staff는 cart를 부여받지 않기 때문에 장바구니에 담기와 구매가 허용되지 않습니다. carts에 저장된 목록이 payments로 전환되면 이전에 payments가 처리되기 전까지 새로운 payemnt를 만들 수 없습니다.
 - Likes & account<br>
-![image](https://user-images.githubusercontent.com/59759468/105464368-d61d5200-5cd4-11eb-9b1a-c355bd0a09bc.png)
+![image](https://user-images.githubusercontent.com/59759468/105464368-d61d5200-5cd4-11eb-9b1a-c355bd0a09bc.png)<br>
 한 유저는 모든 drinks 에 대한 1개의 like row 를 생성할 수 있습니다. 간단한 처리이며, 자신의 likes를 확보하고, likes를 ordering으로 활용하기 위한 용도로 구현하였습니다. 현재는 list_view 에서 로그인이 되어있는 상태라면 간단하게 button으로 toggle가능하도록 처리하고 있습니다.
 
 ## 7. Code sample
