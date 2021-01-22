@@ -9,3 +9,4 @@
 - 권혜주 https://github.com/hyejoo-kwon
 - 한지훈 https://github.com/codenamenadja
 
+file:///C:/Users/Administrator/Desktop/Web_Django_Project/index.html#opensource-references
