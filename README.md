@@ -114,3 +114,32 @@ def drink_detail_view(request, pk):
 
 ## 8. Complements
 ![image](https://user-images.githubusercontent.com/59759468/105464849-85f2bf80-5cd5-11eb-9698-1b94804944e1.png)
+
+## 9. OpenSource References
+```
+asgiref==3.2.10
+certifi==2020.6.20
+chardet==3.0.4
+defusedxml==0.6.0
+Django==3.1
+django-allauth==0.42.0
+django-extensions==3.0.5
+django-debugtoolbar=3.0a2
+django-filter==2.3.0
+docutils==0.16
+idna==2.10
+importlib-metadata==1.7.0
+oauthlib==3.1.0
+Pillow==7.2.0
+pkg-resources==0.0.0
+pydot==1.4.1
+pygraphviz==1.6
+pyparsing==2.4.7
+python3-openid==3.2.0
+pytz==2020.1
+requests==2.24.0
+requests-oauthlib==1.3.0
+sqlparse==0.3.1
+urllib3==1.25.10
+zipp==3.1.0
+```
